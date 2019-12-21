@@ -247,7 +247,27 @@ def display_data(df):
             print("Sorry, I do not understand your input. Please type 'yes' or"
                   " 'no'.")
 
-
+if display.lower() == 'yes':
+    # prints every column except the 'journey' column created in statistics()
+    print(df[df.columns[0:-1]].iloc[head:tail])
+    display_more = ''
+    while display_more.lower() != 'no':
+        valid_input_2 = False
+        while valid_input_2 == False:
+            display_more = input('\nWould you like to view more individual'
+                                 ' trip data? Type \'yes\' or \'no\'.\n')
+            valid_input_2 = is_valid(display_more)
+            if valid_input_2 == True:
+                break
+            else:
+                print("Sorry, I do not understand your input. Please type "
+                      "'yes' or 'no'.")
+        if display_more.lower() == 'yes':
+            head += 5
+            tail += 5
+            print(df[df.columns[0:-1]].iloc[head:tail])
+        elif display_more.lower() == 'no':
+            break
 
 def statistics():
     '''Calculates and prints out the descriptive statistics about a city and
