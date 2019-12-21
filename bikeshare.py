@@ -371,7 +371,13 @@ def statistics():
 
     # Display five lines of data at a time if user specifies that they would like to
     display_data(df_filtered)
-
+# Restart?
+restart = input('\nWould you like to restart? Type \'yes\' or \'no\'.\n')
+while restart.lower() not in ['yes', 'no']:
+    print("Invalid input. Please type 'yes' or 'no'.")
+    restart = input('\nWould you like to restart? Type \'yes\' or \'no\'.\n')
+if restart.lower() == 'yes':
+    statistics()
 
 
 
